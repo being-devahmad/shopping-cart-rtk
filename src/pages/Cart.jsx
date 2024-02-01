@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { remove } from "../Redux/CartSlice";
-import { loadStripe } from "@stripe/stripe-js";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,8 @@ const Cart = () => {
 
   const handleRemove = (id) => {
     dispatch(remove(id));
+
+    toast.error("Item removed from cart!");
   };
 
   const decrement = (id) => {

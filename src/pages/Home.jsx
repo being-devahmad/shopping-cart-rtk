@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { add } from "../Redux/CartSlice";
 import { STATUSES, fetchProducts } from "../Redux/ProductSlice";
 
 const Home = () => {
@@ -12,9 +11,7 @@ const Home = () => {
     dispatch(fetchProducts());
   }, []);
 
-  const handleAdd = (product) => {
-    dispatch(add(product));
-  };
+  
 
   if (status == STATUSES.LOADING) {
     return (
@@ -52,14 +49,8 @@ const Home = () => {
                       Description: {description.slice(0, 40)}
                     </p>
                     <p className="card-text">Price: ${price}</p>
-                    {/* <NavLink to={`/products/${id}`} className="btn btn-dark">
+                    <NavLink to={`/products/${id}`} className="btn btn-dark">
                       Read More
-                    </NavLink> */}
-                    <NavLink
-                      className="btn btn-dark"
-                      onClick={() => handleAdd(product)}
-                    >
-                      Add o Cart
                     </NavLink>
                   </div>
                 </div>
